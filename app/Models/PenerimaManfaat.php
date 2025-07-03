@@ -20,4 +20,16 @@ class PenerimaManfaat extends Model
     public function penyaluran_wakaf() {
         return $this->hasMany(PenyaluranWakaf::class, 'penerima');
     }
+
+    public function pembuat() {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+    
+    public function pengupdate() {
+        return $this->belongsTo(User::class, 'deleted_by');
+    }
+    
+    public function penghapus() {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
 }
