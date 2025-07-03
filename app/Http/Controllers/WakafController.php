@@ -2,47 +2,79 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Wakaf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class WakafController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    public function index() {
+        $wakaf = Wakaf::with('nazhir')->get();
+        return response()->json([
+            'success' => true,
+            'data' => $wakaf,
+            'message' => 'Data Wakaf'
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function createOrUpdate(Request $request)
     {
-        //
+        $validator = Validator::make([
+            'id' => ['nullable', 'exists:wakafs','id'],
+            'nama_aset' => ['required'],
+            'jenis_aset' => ['required, in:Tanah,Bangunan,Uang'],
+            'nilai_estimasi' => ['nullable, numeric'],
+            'lokasi' => ['nullable, string'],
+            'latitude' => ['nullable, numeric'],
+            'longitude' => ['nullable, numeric'],
+            'status' => ['required. in:Produktif,Tidak Produktif'],
+            'nazhir_id' => ['required, exists:nazhirs,id'],
+        ]);
+
+        $data_input = [
+            'nama_aset' => $request->nama_aset,
+            'jenis_aset' => $request->jenis_aset,
+            'nilai_estimasi' => $request->nilai_estimasi,
+            'lokasi' => $request->lokasi,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'status' => $request->status,
+            'nazhir_id' => $request->nazhir_id,
+        ];
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+        
+        $wakaf = Wakaf::createOrUpdate(['id' => $request->id], $data_input);
+
+        $message = $wakaf->wasRecentlyCreated ? 'Tambah' : 'Update';
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil ' . $message . ' Wakaf',
+            'data' => $wakaf
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+    public function destroy(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'id' => ['nullable', 'exists:wakafs,id'],
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $id = $request->id;
+
+        $data = Wakaf::where('id', $id)->first();
+        $data->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Hapus Wakaf',
+            'data' => $data
+        ]);
     }
 }

@@ -2,47 +2,71 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nazhir;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class NazhirController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $nazhir = Nazhir::all();
+        return response()->json([
+            'success' => true,
+            'data' => $nazhir,
+            'message' => 'Data Nazhir'
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function createOrUpdate(Request $request)
     {
-        //
+        $validator = Validator::make([
+            'id' => ['nullable', 'exists:nazhirs,id'],
+            'nama_lenkap' => ['required'],
+            'no_hp' => ['required'],
+            'alamat' => ['required']
+        ]);
+
+        $data_input = [
+            'nama_lenkap' => $request->nama_lengkap,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat
+        ];
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+        
+        $nazhir = Nazhir::createOrUpdate(['id' => $request->id], $data_input);
+
+        $message = $nazhir->wasRecentlyCreated ? 'Tambah' : 'Update';
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil ' . $message . ' Nazhir',
+            'data' => $nazhir
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function destroy(Request $request)
     {
-        //
-    }
+        $validator = Validator::make($request->all(), [
+            'id' => ['nullable', 'exists:nazhirs,id'],
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $id = $request->id;
+
+        $data = Nazhir::where('id', $id)->first();
+        $data->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil Hapus Nazhir',
+            'data' => $data
+        ]);
     }
 }

@@ -22,4 +22,16 @@ class Wakaf extends Model
     {
         return $this->hasMany(PenyaluranWakaf::class);
     }
+
+    public function pembuat() {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+    
+    public function pengupdate() {
+        return $this->belongsTo(User::class, 'deleted_by');
+    }
+    
+    public function penghapus() {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
 }
