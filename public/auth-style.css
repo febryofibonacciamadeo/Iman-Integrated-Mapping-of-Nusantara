@@ -1,0 +1,92 @@
+
+* { box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f6f6f6;
+}
+.container {
+  display: flex;
+  width: 800px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+.signin, .register, .login-link, .signup {
+  flex: 1;
+  padding: 40px;
+}
+.signin, .register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.signin h2, .register h2 {
+  margin-bottom: 20px;
+}
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.social-icons button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+.signin input, .register input {
+  margin: 8px 0;
+  padding: 12px;
+  border: none;
+  background: #eee;
+  width: 100%;
+  border-radius: 5px;
+}
+.signin button, .register button {
+  margin-top: 15px;
+  padding: 12px;
+  width: 100%;
+  background: #00b894;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.signup, .login-link {
+  background: linear-gradient(135deg, #00b894, #00cec9);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.signup h2, .login-link h2 {
+  margin-bottom: 10px;
+}
+.signup button, .login-link button {
+  margin-top: 15px;
+  padding: 10px 30px;
+  border-radius: 20px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.link {
+  margin-top: 10px;
+  text-align: left;
+  font-size: 0.9em;
+  color: #555;
+  cursor: pointer;
+}
