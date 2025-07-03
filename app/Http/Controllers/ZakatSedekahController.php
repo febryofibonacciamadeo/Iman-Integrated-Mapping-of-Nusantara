@@ -7,6 +7,7 @@ use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
 use Illuminate\Validation\Rule;
+use Illuminate\Container\Attributes\Auth;
 
 class ZakatSedekahController extends Controller
 {
@@ -24,22 +25,59 @@ class ZakatSedekahController extends Controller
     {
         $validator = FacadesValidator::make([
             'id' => ['nullable', 'exists:donaturs,id'],
+            'nama_lenkap' => ['required'],
             'jenis_identitas' => ['required'],
             'jenis_kelamin' => ['required'],
-            'nama_lenkap' => ['required'],
-            'email' => ['require', Rule::unique('donaturs', 'email')->ignore($request->id)],
-            ''
+            'email' => ['required', Rule::unique('donaturs', 'email')->ignore($request->id)],
+            'no_hp' => ['required'],
+            'alamat' => ['required']
         ]);
 
-        $data = Donatur::create($validator);
+        $data_input = [
+            'nama_lenkap' => $request->nama_lengkap,
+            'jenis_identitas' => $request->jenis_identitas,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'email' => $request->email,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat
+        ];
+        
+        $donatur = Donatur::createOrUpdate(['id' => $request->id], $data_input);
+
+        $message = $donatur->wasRecentlyCreated ? 'Tambah' : 'Update';
+
         return response()->json([
             'success' => true,
-            'message' => 'Berhasil'
+            'message' => 'Berhasil ' . $message . ' Donatue',
+            'data' => $donatur
         ]);
     }
     
     public function destroy(string $id)
     {
-        //
+        // // Validasi data
+        // $validator = FacadesValidator::make($request->all(), [
+        //     'id' => ['nullable', 'exists:jadwal_inspirasi_pagi,id'],
+        // ]);
+
+        // // Cek jika validasi gagal
+        // if ($validator->fails()) {
+        //     return response()->json($validator->errors(), 422);
+        // }
+
+        // // Ambil id
+        // $id = $request->id;
+
+        // // Hapus dari DB utama
+        // $data = JadwalInspirasiPagi::where('id', $id)->first();
+        // $data->delete();
+
+        // $data_input = ['deleted_by' => Auth::id()];
+
+        // return response()->json([
+        //     'success' => true,
+        //     'message' => 'Berhasil Hapus Jadwal Inspirasi Pagi',
+        //     'data' => $data
+        // ]);
     }
 }
