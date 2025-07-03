@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>dashboard by dicki</h1>
+    <div class="container">
+        <div class="row">
+            @yield('content')
+        </div>
+    </div>
 </body>
 </html>
