@@ -7,6 +7,8 @@ use App\Http\Controllers\NazhirController;
 use App\Http\Controllers\PenerimaManfaatController;
 use App\Http\Controllers\WakafController;
 use App\Http\Controllers\ZakatSedekahController;
+use App\Models\Wakaf;
+use App\Models\ZakatSedekah;
 
 Route::get('/login',    [AuthController::class, 'login_page'])->name('login');
 Route::get('/register',    [AuthController::class, 'register_page']);
@@ -16,7 +18,9 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', function () {
-        return view('dashboard');
+        $wakafs = Wakaf::all();
+        $zakatSedekahs = ZakatSedekah::all();
+        return view('dashboard', compact('wakafs', 'zakatSedekahs'));
     });
 
     Route::prefix('donatur')->controller(DonaturController::class)->group(function() {
@@ -59,6 +63,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/index', 'index')->name('penyaluran.get');
         Route::post('/update-or-create', 'updateOrCreate')->name('penyaluran.updateOrCreate');
         Route::post('/destroy', 'destroy')->name('penyaluran.delete');
+    });
+    
+    Route::prefix('wilayah-prioritas')->controller(PenerimaManfaatController::class)->group(function() {
+        Route::get('/', 'show')->name('wp.page');
+        Route::get('/index', 'index')->name('wp.get');
+        Route::post('/update-or-create', 'updateOrCreate')->name('wp.updateOrCreate');
+        Route::post('/destroy', 'destroy')->name('wp.delete');
     });
 
 });

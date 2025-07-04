@@ -1,0 +1,164 @@
+[
+  {
+    "nama":"Kota Bandung",
+    "tingkat_kemiskinan":3.6,
+    "latitude":-6.9147,
+    "longitude":107.6098
+  },
+  {
+    "nama":"Kota Bogor",
+    "tingkat_kemiskinan":6.3,
+    "latitude":-6.5971,
+    "longitude":106.806
+  },
+  {
+    "nama":"Kota Depok",
+    "tingkat_kemiskinan":2.6,
+    "latitude":-6.4025,
+    "longitude":106.7942
+  },
+  {
+    "nama":"Kota Bekasi",
+    "tingkat_kemiskinan":3.9,
+    "latitude":-6.2383,
+    "longitude":106.9756
+  },
+  {
+    "nama":"Kota Cimahi",
+    "tingkat_kemiskinan":4.7,
+    "latitude":-6.8722,
+    "longitude":107.5421
+  },
+  {
+    "nama":"Kota Cirebon",
+    "tingkat_kemiskinan":7.1,
+    "latitude":-6.7372,
+    "longitude":108.5507
+  },
+  {
+    "nama":"Kota Sukabumi",
+    "tingkat_kemiskinan":7.6,
+    "latitude":-6.919,
+    "longitude":106.9272
+  },
+  {
+    "nama":"Kota Tasikmalaya",
+    "tingkat_kemiskinan":6.4,
+    "latitude":-7.3274,
+    "longitude":108.2207
+  },
+  {
+    "nama":"Kabupaten Bandung",
+    "tingkat_kemiskinan":6.1,
+    "latitude":-7.0203,
+    "longitude":107.532
+  },
+  {
+    "nama":"Kabupaten Bandung Barat",
+    "tingkat_kemiskinan":6.7,
+    "latitude":-6.836,
+    "longitude":107.4713
+  },
+  {
+    "nama":"Kabupaten Bekasi",
+    "tingkat_kemiskinan":4.8,
+    "latitude":-6.2483,
+    "longitude":107.148
+  },
+  {
+    "nama":"Kabupaten Bogor",
+    "tingkat_kemiskinan":7.2,
+    "latitude":-6.4851,
+    "longitude":106.7545
+  },
+  {
+    "nama":"Kabupaten Ciamis",
+    "tingkat_kemiskinan":7.9,
+    "latitude":-7.3305,
+    "longitude":108.3532
+  },
+  {
+    "nama":"Kabupaten Cianjur",
+    "tingkat_kemiskinan":9.5,
+    "latitude":-6.8222,
+    "longitude":107.1424
+  },
+  {
+    "nama":"Kabupaten Cirebon",
+    "tingkat_kemiskinan":9.2,
+    "latitude":-6.7332,
+    "longitude":108.5523
+  },
+  {
+    "nama":"Kabupaten Garut",
+    "tingkat_kemiskinan":9.3,
+    "latitude":-7.379,
+    "longitude":107.7686
+  },
+  {
+    "nama":"Kabupaten Indramayu",
+    "tingkat_kemiskinan":10.1,
+    "latitude":-6.3262,
+    "longitude":108.325
+  },
+  {
+    "nama":"Kabupaten Karawang",
+    "tingkat_kemiskinan":6.4,
+    "latitude":-6.3059,
+    "longitude":107.2931
+  },
+  {
+    "nama":"Kabupaten Kuningan",
+    "tingkat_kemiskinan":9.8,
+    "latitude":-7.0083,
+    "longitude":108.483
+  },
+  {
+    "nama":"Kabupaten Majalengka",
+    "tingkat_kemiskinan":8.7,
+    "latitude":-6.8369,
+    "longitude":108.2277
+  },
+  {
+    "nama":"Kabupaten Pangandaran",
+    "tingkat_kemiskinan":8.1,
+    "latitude":-7.6758,
+    "longitude":108.6554
+  },
+  {
+    "nama":"Kabupaten Purwakarta",
+    "tingkat_kemiskinan":6.2,
+    "latitude":-6.5589,
+    "longitude":107.4458
+  },
+  {
+    "nama":"Kabupaten Subang",
+    "tingkat_kemiskinan":8.3,
+    "latitude":-6.5754,
+    "longitude":107.7636
+  },
+  {
+    "nama":"Kabupaten Sukabumi",
+    "tingkat_kemiskinan":9.9,
+    "latitude":-6.9271,
+    "longitude":106.929
+  },
+  {
+    "nama":"Kabupaten Sumedang",
+    "tingkat_kemiskinan":7.8,
+    "latitude":-6.8387,
+    "longitude":107.9199
+  },
+  {
+    "nama":"Kabupaten Tasikmalaya",
+    "tingkat_kemiskinan":8.5,
+    "latitude":-7.3514,
+    "longitude":108.2205
+  },
+  {
+    "nama":"Kabupaten Bogor Utara",
+    "tingkat_kemiskinan":6.9,
+    "latitude":-6.481,
+    "longitude":106.8669
+  }
+]
