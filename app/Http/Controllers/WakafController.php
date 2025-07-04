@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Validator;
 
 class WakafController extends Controller
 {
+    public function show() {
+        return view('wakaf.index');
+    }
+
     public function index() {
         $wakaf = Wakaf::with('nazhir')->get();
         return response()->json([

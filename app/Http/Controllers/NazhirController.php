@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Validator;
 
 class NazhirController extends Controller
 {
+    public function show() {
+        return view('nazhir.index');
+    }
+    
     public function index()
     {
         $nazhir = Nazhir::all();

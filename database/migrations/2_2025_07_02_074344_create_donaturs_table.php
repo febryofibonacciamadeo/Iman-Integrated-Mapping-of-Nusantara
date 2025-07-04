@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreign('jenis_kelamin')->references('id')->on('Jenis_kelamins')->onDelete('set null');
             $table->unsignedBigInteger('jenis_identitas')->nullable();
             $table->foreign('jenis_identitas')->references('id')->on('jenis_identitas')->onDelete('set null');
+            $table->string('no_identitas')->nullable();
             $table->string('email')->nullable();
             $table->string('no_hp')->nullable();
             $table->text('alamat')->nullable();
