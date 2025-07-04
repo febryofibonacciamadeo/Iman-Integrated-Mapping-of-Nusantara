@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Validator;
 
 class PenerimaManfaatController extends Controller
 {
+    public function show() {
+        return view('penerima_manfaat.index');
+    }
+
     public function index() {
         $PM = PenerimaManfaat::all();
         return response()->json([

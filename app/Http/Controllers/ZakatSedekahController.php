@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Validator;
 
 class ZakatSedekahController extends Controller
 {
+    public function show() {
+        return view('zakat.index');
+    }
+
     public function index() {
         $zakat = ZakatSedekah::with(['donatue', 'penerima'])->get();
         return response()->json([
